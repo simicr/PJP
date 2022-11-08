@@ -6,7 +6,8 @@ delioci n = [delioci | delioci <- [1..n], (mod n delioci) == 0]
 -- suma parnih cifara nekog broja. 
 jeParan n = ( mod n 2 ) == 0
 
-sumaParnih n | n < 10 && jeParan n = n
+sumaParnih n 
+            | n < 10 && jeParan n = n
             | n < 10 = 0
             | jeParan n = (mod n 10) + sumaParnih (div n 10)
             | otherwise = sumaParnih (div n 10)
