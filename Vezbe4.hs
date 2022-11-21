@@ -52,3 +52,4 @@ filterNaselja naselja = filter (kriterijum) naselja
 kriterijum::Naselje -> Bool
 kriterijum (Grad stanovnici _ bazen) = bazen && stanovnici > 150000
 kriterijum (Selo _ _ tip) = tip == "razbijena"
+kriterijum (Varosica _ _) = False
