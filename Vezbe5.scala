@@ -75,7 +75,25 @@ object Main {
         vraca novi par gde je prvi element para pomnozen sa n
         a drugom elementu para je dodat broj n.
     */
-    def transform(par:(Int, Int), skalar:Int):(Int,Int) = (par[1])
+    def transform(par:(Int, Int), skalar:Int):(Int,Int) = { (par._1*skalar , par._2 + skalar) }
+
+    /*
+        8. Napisati funkciju "spljosti" koja radi sa listama.
+
+	    [1, 2, 2, 2, 3, 3, 4, 5, 5, 5] -> [1, 2, 3, 4, 5]
+    */
+
+    def spljosti(input:List[Int]):List[Int] = {
+        input match {
+			case Nil => Nil
+			case (x: Int) :: Nil => x :: Nil
+			case (x: Int) :: (y: Int) :: tail => 
+				if (x == y)
+					spljosti(y :: tail)
+				else
+					x :: spljosti(y :: tail)
+		}
+    }
 
     def main(args:Array[String]):Unit = {
         println(tipKaraktera('a'))
@@ -86,6 +104,8 @@ object Main {
         println(kalkulator(2,3,'t'))
         println(jeBrojevni(2))
         println(jeBrojevni('a'))
+        println(transform( (1,2) , 3))
+        println(spljosti( List(1,2,2,2,3,3,4,5,5,5) ))
     }
 
 
