@@ -27,10 +27,13 @@ object Main {
         if(matrica(0).size != matrica.size) {
             return false
         } else {
-            matrica == transponuj(matrica)
+            matrica.zip((0 until matrica.size).toList).map((x) => postaviNulu(x._2, x._1)).forall(red => red.forall(y => y == 0))
         }
     }
     
+    def postaviNulu(indeks:Int, lista:List[Int]):List[Int] = {
+        for(i <- (0 until lista.size).toList) yield (if (indeks == i) 0 else lista(i))
+    }
     def bezIndeks(indeks:Int, matrica:List[List[Int]]):List[List[Int]] = {
         val trans = transponuj(matrica)
         var res = ((trans.zip((0 until trans.size).toList)).filter(x => x._2 != indeks).map(x => x._1))
@@ -58,9 +61,9 @@ object Main {
         var b = List(List(1, 3, 3), List(0, 3, 5), List(0,0,1))
         //println(pomnozi(a,b))
         //println(transponuj(b))
-        //println(jeDijagonalna(a))
-        //println(jeDijagonalna(b))
-        println(det(b))
+        println(jeDijagonalna(a))
+        println(jeDijagonalna(b))
+        //println(det(b))
     }
 
 }
